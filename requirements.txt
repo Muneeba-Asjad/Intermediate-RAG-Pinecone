@@ -1,0 +1,5 @@
+streamlit
+pypdf
+pinecone
+python-dotenv
+ollama
