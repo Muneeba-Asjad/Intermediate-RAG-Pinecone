@@ -17,4 +17,4 @@ if not GROQ_API_KEY:
 
 # Pinecone Configuration
 INDEX_NAME = "intermediate-rag"
-NAMESPACE = "pdf-documents"
+NAMESPACE = "pdf-documents" 
