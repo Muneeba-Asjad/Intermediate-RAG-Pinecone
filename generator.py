@@ -1,5 +1,8 @@
-import ollama
+from groq import Groq
+from config import GROQ_API_KEY
 
+# Initialize Groq Client
+client = Groq(api_key=GROQ_API_KEY)
 
 NOT_FOUND_MESSAGE = (
     "The answer is not available in the provided document."
@@ -39,17 +42,19 @@ ANSWER:
 """
 
     try:
-        response = ollama.chat(
-            model="llama3.2:1b",
+        response = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
             messages=[
                 {
                     "role": "user",
                     "content": prompt
                 }
-            ]
+            ],
+            temperature=0,
+            max_tokens=512
         )
 
-        answer = response["message"]["content"].strip()
+        answer = response.choices[0].message.content.strip()
 
         return answer
 
